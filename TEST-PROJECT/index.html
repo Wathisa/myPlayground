@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glassmorphism Concept</title>
+    <style>
+      /* 1. จัดการพื้นหลังและเลย์เอาต์หลัก */
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: #390a60;
+        /* ใช้ Grid ช่วยจัดให้การ์ดอยู่ตรงกลางจอแบบง่ายๆ */
+        display: grid;
+        place-items: center;
+        overflow: hidden; /* ซ่อนขอบสีที่อาจจะล้นจอ */
+        position: relative;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* 2. สร้างก้อนสี (Mesh Gradient) แบบใช้ Div แล้วเบลอ */
+      .color-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(150px); /* สั่งเบลอให้ฟุ้ง */
+        z-index: -1; /* ดันไปอยู่หลังสุด */
+      }
+
+      .blob-1 {
+        width: 1000px;
+        height: 1000px;
+        background-color: #550498; /* สีชมพู */
+        top: -50px;
+        left: 5%;
+      }
+
+      .blob-2 {
+        width: 600px;
+        height: 600px;
+        background-color: #9641dc; /* สีฟ้า */
+        bottom: -100px;
+        right: 5%;
+      }
+
+      .blob-3 {
+        width: 600px;
+        height: 600px;
+        background-color: #8447c2; /* สีเหลือง */
+        bottom: -100px;
+        left: 10%;
+      }
+
+      .blob-4 {
+        width: 600px;
+        height: 300px;
+        background-color: #9f41fd; /* สีเขียว */
+        bottom: 80%;
+        left: 50%;
+      }
+
+      /* 3. สร้างการ์ดกระจก (Glassmorphism) */
+      .glass-card {
+        width: 380px;
+        height: 260px;
+        padding: 40px;
+
+        /* พื้นหลังสีขาวโปร่งแสง */
+        background: rgba(255, 255, 255, 0.4);
+
+        /* เอฟเฟกต์กระจกฝ้า (สำคัญมาก) */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        /* เพิ่มขอบสีขาวบางๆ และเงาให้ดูมีมิติ */
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
+        /* จัดเนื้อหาภายในการ์ด */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* ตกแต่งข้อความนิดหน่อย */
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+      p {
+        color: #666;
+        margin: 0;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="color-blob blob-1"></div>
+    <div class="color-blob blob-2"></div>
+    <div class="color-blob blob-3"></div>
+    <div class="color-blob blob-4"></div>
+
+    <div class="glass-card">
+      <h1>Hello Glass!</h1>
+      <p>
+        นี่คือตัวอย่างการผสมผสานระหว่าง<br />Mesh Gradient และ Glassmorphism
+      </p>
+    </div>
+  </body>
+</html>
