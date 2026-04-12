@@ -8,9 +8,70 @@
 
 /* ================= พื้นหลังหลัก ================= */
 body {
-  /* สร้างสีพื้นหลังไล่ระดับม่วงเข้ม-ฟุ้งๆ (Mesh Gradient แบบเบสิก) */
-  background: linear-gradient(135deg, #1a0b2e 0%, #4a148c 50%, #1a0b2e 100%);
+  background-color: #1d0d34; /* ใช้สีม่วงเข้มจัดๆ เกือบดำเป็นสีพื้นหลังสุด */
   color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+/* ================= Mesh Gradient Background ================= */
+/* สร้างกล่องมาครอบก้อนสี ล็อคให้อยู่ติดจอ (fixed) และอยู่หลังสุด (z-index: -1) */
+.mesh-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden; /* ป้องกันไม่ให้ความฟุ้งของสีกระเด็นล้นจอจนเกิด Scrollbar รบกวน */
+}
+
+/* สไตล์หลักของก้อนสี */
+.color-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+}
+
+/* กระจายก้อนสีแต่ละก้อนไปตามมุมต่างๆ ของจอ */
+.blob-1 {
+  width: 800px;
+  height: 800px;
+  background-color: #49078b;
+  top: -10%;
+  left: -10%;
+}
+
+.blob-2 {
+  width: 600px;
+  height: 600px;
+  background-color: #4e1ea1;
+  top: 40%;
+  right: -10%;
+}
+
+.blob-3 {
+  width: 700px;
+  height: 700px;
+  background-color: #6a1ea8; /* สีม่วงสว่าง */
+  bottom: -20%;
+  left: 10%;
+}
+
+.blob-4 {
+  width: 500px;
+  height: 500px;
+  background-color: #461e96;
+  top: -10%;
+  right: 20%;
+}
+
+.blob-5 {
+  width: 400px;
+  height: 400px;
+  background-color: #7844f0;
+  /* opacity: 0.3; ทำให้จางลงหน่อยจะได้ไม่แย่งซีน */
+  top: 50%;
+  left: 40%;
 }
 
 /* ================= เมนูบาร์ (Navigation Bar) ================= */
@@ -24,7 +85,7 @@ body {
   align-items: center;
   padding: 20px 40px;
   z-index: 100; /* ให้อยู่เลเยอร์บนสุด ไม่โดนรูปทับ */
-  transition: background-color 0.4s ease; /* ทำให้เวลาเปลี่ยนสีดูนุ่มนวล */
+  transition: all 0.4s ease; /* ทำให้เวลาเปลี่ยนสีดูนุ่มนวล */
 }
 
 /* ลูกเล่น: เวลาเอาเมาส์ไปชี้ที่แถบเมนู (Hover) ให้ขึ้นพื้นหลังสีม่วงเข้ม */
@@ -95,7 +156,7 @@ body {
   /* เพิ่ม 3 บรรทัดนี้เข้ามาเพื่อจัดเรียงไอคอนกับข้อความ */
   display: flex;
   align-items: center;
-  gap: 8px; /* ระยะห่างระหว่างไอคอนกับตัวหนังสือ ปรับได้ตามชอบค่ะ */
+  gap: 8px; /* ระยะห่างระหว่างไอคอนกับตัวหนังสือ */
 }
 
 .account-btn:hover {
@@ -106,6 +167,14 @@ body {
 .btn-icon {
   height: 24px; /* กำหนดความสูงไอคอนให้พอดีกับตัวหนังสือ */
   width: auto;
+}
+
+.navbar.scrolled {
+  background-color: rgba(26, 11, 46, 0.85); /* สีม่วงเข้มเกือบทึบ */
+  backdrop-filter: blur(10px); /* เพิ่มความเบลอนิดๆ ให้ดูเป็นกระจก */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* ใส่เงาใต้เมนูให้ดูลอยแยกออกมาจากเนื้อหาเว็บ */
+  /* padding: 12px 40px;  ลูกเล่นแถม: หดความสูงของเมนูลงนิดนึงตอนเลื่อนลง จะได้ไม่บังเนื้อหา */
 }
 
 /* ================= Hero Section (ส่วนสไลด์ภาพ) ================= */
@@ -183,7 +252,7 @@ body {
 
 /* ================= Category Bar ================= */
 .category-bar {
-  background-color: #1a0b2e; /* สีพื้นหลังของแถบ (สีม่วงเข้มทึบๆ) */
+  background-color: #281046; /* สีพื้นหลังของแถบ (สีม่วงเข้มทึบๆ) */
   width: 100%;
   padding: 20px 0; /* เพิ่มพื้นที่ว่างบน-ล่าง ให้ดูไม่อึดอัด */
   /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); เส้นคั่นบางๆ สีขาวจางๆ ระหว่าง Section */
@@ -559,7 +628,21 @@ body {
 /* ================= Join Our Community Section ================= */
 .community-section {
   width: 100%;
-  padding: 80px 0; /* เพิ่มพื้นที่ว่างบน-ล่างให้ดูโปร่งๆ ไม่กะทัดรัดเกินไป */
+  padding: 80px 0;
+
+  /* 1. ใส่สี Overlay ทับรูปภาพ (ปรับความเข้มที่เลข 0.7) และตามด้วยที่อยู่ไฟล์รูปภาพ */
+  background-image:
+    linear-gradient(rgba(41, 14, 77, 0.8), rgba(41, 14, 77, 0.8)),
+    url("/images/community-bg.png");
+
+  /* 2. สั่งให้รูปภาพขยายเต็มพื้นที่ของ Section เสมอ */
+  background-size: cover;
+
+  /* 3. จัดให้อยู่กึ่งกลางรูปภาพเสมอ */
+  background-position: center;
+
+  /* 4. ป้องกันไม่ให้รูปภาพเล่นซ้ำเป็นลายกระเบื้องถ้ารูปเล็กเกินไป */
+  background-repeat: no-repeat;
 }
 
 .community-container {
