@@ -222,12 +222,21 @@ body {
 
 /* ================= Recommend Item Section ================= */
 .recommend-section {
-  padding: 60px 40px; /* ระยะห่างบน-ล่าง 60px, ซ้าย-ขวา 40px */
-  max-width: 1200px;
-  margin: 0 auto;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* เส้นคั่นบางๆ ด้านล่าง Section */
+  width: 100%; /* บังคับให้ Section กว้างทะลุไปถึงขอบจอ */
+  padding: 60px 0; /* เอา padding ซ้าย-ขวาออก เพื่อให้เส้นคั่นวิ่งไปสุดขอบ */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* บังคับเนื้อหาด้านในให้อยู่ตรงกลาง และกว้างไม่เกิน 1200px เท่าเดิม */
+.recommend-section .section-header,
+.recommend-section .card-grid {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px; /* ย้ายระยะขอบซ้าย-ขวามาใส่ตรงนี้แทน ไม่ให้เนื้อหาติดจอเกินไป */
+  padding-right: 40px;
+}
 /* ส่วนหัวข้อ (Recommend Item & more) */
 .section-header {
   display: flex;
@@ -378,16 +387,26 @@ body {
 
 /* ================= Artist Spotlight Section ================= */
 .artist-spotlight-section {
-  padding: 60px 40px;
+  width: 100%; /* บังคับให้ Section กว้างทะลุไปถึงขอบจอ */
+  padding: 60px 0; /* เอา padding ซ้าย-ขวาออก เพื่อให้เส้นคั่นวิ่งไปสุดขอบ */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* เส้นคั่นจะยาวเต็มจอแล้ว */
+}
+
+/* บังคับเนื้อหาด้านในให้อยู่ตรงกลาง และกว้างไม่เกิน 1200px เท่าเดิม */
+.artist-spotlight-section .section-header,
+.artist-spotlight-section .artist-container {
   max-width: 1200px;
-  margin: 0 auto;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* เส้นคั่นบางๆ ด้านล่างเหมือนเดิม */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px; /* ย้ายระยะขอบซ้าย-ขวามาใส่ตรงนี้แทน ไม่ให้เนื้อหาติดจอเกินไป */
+  padding-right: 40px;
 }
 
 /* แบ่งเลย์เอาต์เป็น 2 ฝั่ง ซ้าย-ขวา ด้วย Grid */
 .artist-container {
   display: grid;
-  grid-template-columns: 1.7fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 60px; /* ระยะห่างระหว่างฝั่งซ้าย(ข้อความ) กับ ฝั่งขวา(รูปภาพ) */
   align-items: center; /* จัดให้เนื้อหาทั้งสองฝั่งอยู่กึ่งกลางไม้บรรทัดเดียวกันในแนวตั้ง */
   margin-top: 20px;
@@ -397,8 +416,8 @@ body {
 .artist-info {
   display: flex;
   flex-direction: column;
-  align-items: center; /* จัดให้ข้อความและปุ่มอยู่กึ่งกลาง */
-  text-align: center; /* ให้ตัวหนังสือจัดกึ่งกลาง (Center alignment) */
+  align-items: flex-start; /* เปลี่ยนจาก center เป็น flex-start เพื่อดึงปุ่มและกล่องไปชิดซ้าย */
+  text-align: left; /* เปลี่ยนจาก center เป็น left เพื่อให้ตัวหนังสือชิดซ้าย */
   gap: 24px; /* ระยะห่างระหว่าง ชื่อ - ข้อความ - ปุ่ม */
 }
 
@@ -410,13 +429,13 @@ body {
 
 .artist-quote {
   color: #e0e0e0; /* สีขาวอมเทานิดๆ ให้ดูซอฟต์ลง ไม่อ่านแล้วแยงตา */
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6; /* เพิ่มระยะห่างระหว่างบรรทัดให้อ่านง่ายขึ้น */
 }
 
 .read-more-btn {
   background-color: #f0b144;
-  color: #1a0b2e;
+  color: #ffffff;
   text-decoration: none;
   padding: 10px 40px; /* ด้านบน-ล่าง 10px, ซ้าย-ขวา 40px (ให้ปุ่มดูยาวๆ) */
   font-weight: bold;
@@ -427,7 +446,7 @@ body {
 }
 
 .read-more-btn:hover {
-  background-color: #d99a2e; /* สีเหลืองเข้มขึ้นเวลาเอาเมาส์ชี้ */
+  background-color: #e45f2b;
 }
 
 /* --- ฝั่งขวา: กรอบรูปภาพ --- */
