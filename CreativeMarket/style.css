@@ -1,0 +1,450 @@
+/* ================= รีเซ็ตค่าเริ่มต้นของเบราว์เซอร์ ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter"; /* เปลี่ยนฟอนต์ในอนาคตได้ตรงนี้นะคะ */
+}
+
+/* ================= พื้นหลังหลัก ================= */
+body {
+  /* สร้างสีพื้นหลังไล่ระดับม่วงเข้ม-ฟุ้งๆ (Mesh Gradient แบบเบสิก) */
+  background: linear-gradient(135deg, #1a0b2e 0%, #4a148c 50%, #1a0b2e 100%);
+  color: #ffffff;
+}
+
+/* ================= เมนูบาร์ (Navigation Bar) ================= */
+.navbar {
+  position: fixed; /* ทำให้เมนูติดขอบจอด้านบนตลอดเวลา */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 100; /* ให้อยู่เลเยอร์บนสุด ไม่โดนรูปทับ */
+  transition: background-color 0.4s ease; /* ทำให้เวลาเปลี่ยนสีดูนุ่มนวล */
+}
+
+/* ลูกเล่น: เวลาเอาเมาส์ไปชี้ที่แถบเมนู (Hover) ให้ขึ้นพื้นหลังสีม่วงเข้ม */
+.navbar:hover {
+  background-color: rgba(26, 11, 46, 0.9);
+}
+
+.logo img {
+  height: 40px; /* กำหนดความสูงโลโก้ */
+  width: auto;
+}
+
+/* ลิงก์เมนูตรงกลาง */
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 25px; /* ระยะห่างระหว่างเมนู */
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f0b144; /* เปลี่ยนเป็นสีเหลืองตอนเอาเมาส์ชี้ */
+}
+
+.separator {
+  color: #888888; /* สีของเส้นคั่น | */
+}
+
+/* ส่วนไอคอนตะกร้าและปุ่ม Account */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* CSS สำหรับควบคุมขนาดรูป .png ที่เป็นไอคอนขนาดเล็ก (เช่น ตะกร้า) */
+.icon-img {
+  height: 24px;
+  width: auto;
+}
+
+/* แก้ไข CSS สำหรับปุ่ม Account */
+.account-btn {
+  background-color: #f0b144;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Inter", sans-serif; /* บังคับใช้ฟอนต์ Inter */
+
+  /* เพิ่ม 3 บรรทัดนี้เข้ามาเพื่อจัดเรียงไอคอนกับข้อความ */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* ระยะห่างระหว่างไอคอนกับตัวหนังสือ ปรับได้ตามชอบค่ะ */
+}
+
+.account-btn:hover {
+  background-color: #e45f2b;
+}
+
+/* เพิ่มคลาสใหม่ สำหรับควบคุมขนาดไอคอนด้านในปุ่ม */
+.btn-icon {
+  height: 24px; /* กำหนดความสูงไอคอนให้พอดีกับตัวหนังสือ */
+  width: auto;
+}
+
+/* ================= Hero Section (ส่วนสไลด์ภาพ) ================= */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* ให้ความสูงเต็มหน้าจอ 100% (Viewport Height) */
+  overflow: hidden; /* ถ้าภาพล้นหน้าจอให้ซ่อนไว้ */
+}
+
+.slider-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* การตั้งค่ารูปภาพหลักให้เต็มพื้นที่ */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* สำคัญ: ช่วยให้ภาพขยายเต็มจอโดยที่สัดส่วนรูปไม่บิดเบี้ยว */
+}
+
+/* ปุ่มเลื่อนซ้าย-ขวา */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* จัดให้อยู่กึ่งกลางแนวตั้งเป๊ะๆ */
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.slider-btn:hover {
+  opacity: 1; /* เวลาเอาเมาส์ชี้ให้รูปชัดขึ้น 100% */
+}
+
+.left-btn {
+  left: 40px; /* ห่างจากขอบซ้าย */
+}
+
+.right-btn {
+  right: 40px; /* ห่างจากขอบขวา */
+}
+
+/* CSS สำหรับควบคุมขนาดรูป .png ที่เป็นไอคอนขนาดใหญ่ (เช่น ลูกศร) */
+.icon-img-large {
+  height: 40px;
+  width: auto;
+}
+
+/* จุด Indicator 3 จุดด้านล่าง */
+.slider-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%); /* จัดให้อยู่กึ่งกลางแนวนอน */
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.dot.active {
+  opacity: 1; /* จุดไหนที่กำลังแสดงอยู่ ให้สว่างสุด */
+}
+
+/* ================= Category Bar ================= */
+.category-bar {
+  background-color: #1a0b2e; /* สีพื้นหลังของแถบ (สีม่วงเข้มทึบๆ) */
+  width: 100%;
+  padding: 20px 0; /* เพิ่มพื้นที่ว่างบน-ล่าง ให้ดูไม่อึดอัด */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); เส้นคั่นบางๆ สีขาวจางๆ ระหว่าง Section */
+}
+
+.category-container {
+  display: flex;
+  justify-content: center; /* จัดให้หมวดหมู่ทั้งหมดไปกองรวมกันตรงกลางหน้าจอ */
+  align-items: center;
+  gap: 80px; /* ระยะห่างระหว่างแต่ละหมวดหมู่ (ปรับลด-เพิ่มตัวเลขนี้ได้ตามความชอบค่ะ) */
+  max-width: 1200px; /* บังคับไม่ให้กว้างเกินไปตอนเปิดจอมอนิเตอร์ใหญ่ๆ */
+  margin: 0 auto; /* จัดกึ่งกลางคอนเทนเนอร์ */
+}
+
+.category-item {
+  display: flex;
+  align-items: center; /* ให้ไอคอนกับข้อความเรียงตรงกันในแนวนอน */
+  gap: 12px; /* ระยะห่างระหว่างไอคอน กับ ตัวหนังสือ */
+  color: #ffffff;
+  text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
+  font-size: 16px;
+  font-weight: 500; /* ให้ตัวหนังสือหนาขึ้นนิดนึง จะได้อ่านง่าย */
+  transition: color 0.3s ease; /* ทำให้เวลาชี้เมาส์แล้วสีเปลี่ยนแบบนุ่มนวล */
+}
+
+/* เอฟเฟกต์เวลาเอาเมาส์ไปชี้ */
+.category-item:hover {
+  color: #f0b144; /* เปลี่ยนสีตัวหนังสือเป็นสีเหลืองแบบเดียวกับปุ่ม Account */
+}
+
+/* ควบคุมขนาดรูปไอคอน .png */
+.category-icon {
+  height: 28px; /* กำหนดความสูงไอคอนให้พอดีกับตัวหนังสือ */
+  width: auto;
+}
+
+/* ================= Recommend Item Section ================= */
+.recommend-section {
+  padding: 60px 40px; /* ระยะห่างบน-ล่าง 60px, ซ้าย-ขวา 40px */
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* เส้นคั่นบางๆ ด้านล่าง Section */
+}
+
+/* ส่วนหัวข้อ (Recommend Item & more) */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* ให้ข้อความชิดขอบล่างตรงกัน */
+  margin-bottom: 30px;
+}
+
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.more-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.more-link:hover {
+  color: #f0b144;
+}
+
+.more-icon {
+  height: 18px;
+  width: auto;
+}
+
+/* ส่วนตารางจัดเรียงการ์ด */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* แบ่งเป็น 4 คอลัมน์เท่าๆ กัน */
+  gap: 24px; /* ระยะห่างระหว่างกล่อง */
+}
+
+/* ================= Glassmorphism Card ================= */
+/* ส่วนนี้คือพระเอกของการทำกล่องใสๆ ค่ะ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05); /* สีขาวโปร่งใส 5% */
+  backdrop-filter: blur(12px); /* ทำพื้นหลังให้เบลอเหมือนกระจกฝ้า */
+  -webkit-backdrop-filter: blur(12px); /* สำหรับ Safari */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* เส้นขอบขาวบางๆ เพื่อเน้นขอบกระจก */
+  padding: 16px;
+  border-radius: 4px; /* ทำให้มุมมนนิดๆ */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+/* เอฟเฟกต์เวลาเอาเมาส์ชี้การ์ด */
+.glass-card:hover {
+  transform: translateY(-5px); /* ยกการ์ดลอยขึ้นนิดนึง */
+  background: rgba(255, 255, 255, 0.1); /* ให้กล่องสว่างขึ้นนิดนึง */
+}
+
+/* ส่วนกรอบรูปภาพสินค้า (ปรับให้ยาวขึ้น) */
+.card-img-wrapper {
+  position: relative; /* สำคัญมาก: เพื่อให้แถบข้อความด้านในเกาะอยู่กับรูปได้ */
+  width: 100%;
+  aspect-ratio: 3/4; /* บังคับสัดส่วนรูปให้ยาวลงมาเป็นแนวตั้ง */
+  overflow: hidden;
+  border-radius: 4px; /* ทำให้มุมของรูปมนนิดๆ ไม่แทงทะลุกล่อง */
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ส่วนรายละเอียดสินค้า (ทำเป็นแถบสีขาวจางๆ ทับบนรูป) */
+.card-info {
+  position: absolute; /* สั่งให้ลอยขึ้นมาทับรูปภาพ */
+  bottom: 0; /* ให้เกาะชิดขอบล่างของรูปเสมอ */
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3); /* สีขาวแบบโปร่งแสง */
+  backdrop-filter: blur(8px); /* ทำเบลอให้ดูเป็นแถบฝ้าๆ */
+  -webkit-backdrop-filter: blur(8px);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-title-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* ปรับสีตัวหนังสือให้เข้มขึ้นนิดหน่อย จะได้อ่านง่ายบนพื้นสีขาวจาง */
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1a0b2e; /* เปลี่ยนเป็นสีม่วงเข้ม/ดำ */
+}
+
+.product-sub {
+  font-weight: 400;
+  color: #444444; /* สีเทาเข้ม */
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a0b2e;
+}
+
+.artist-name {
+  font-size: 12px;
+  color: #666666;
+}
+
+/* ================= ควบคุมลิงก์ของรูปและข้อความสินค้า ================= */
+.product-link {
+  text-decoration: none; /* เอาเส้นใต้ของลิงก์ออก */
+  display: block; /* สั่งให้พื้นที่ลิงก์ครอบคลุมพื้นที่ทั้งหมดของกล่อง */
+  color: inherit; /* ให้สีตัวอักษรเป็นไปตามที่เรากำหนดไว้ใน .card-info */
+}
+
+/* ปุ่ม ADD TO CART */
+.add-to-cart-btn {
+  background-color: #f0b144;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 0;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-top: auto; /* ดันปุ่มให้ไปติดขอบล่างสุดของการ์ดเสมอ */
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e45f2b; /* สีเหลืองเข้มขึ้นตอนเมาส์ชี้ */
+}
+
+/* ================= Artist Spotlight Section ================= */
+.artist-spotlight-section {
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* เส้นคั่นบางๆ ด้านล่างเหมือนเดิม */
+}
+
+/* แบ่งเลย์เอาต์เป็น 2 ฝั่ง ซ้าย-ขวา ด้วย Grid */
+.artist-container {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 60px; /* ระยะห่างระหว่างฝั่งซ้าย(ข้อความ) กับ ฝั่งขวา(รูปภาพ) */
+  align-items: center; /* จัดให้เนื้อหาทั้งสองฝั่งอยู่กึ่งกลางไม้บรรทัดเดียวกันในแนวตั้ง */
+  margin-top: 20px;
+}
+
+/* --- ฝั่งซ้าย: ข้อความ --- */
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* จัดให้ข้อความและปุ่มอยู่กึ่งกลาง */
+  text-align: center; /* ให้ตัวหนังสือจัดกึ่งกลาง (Center alignment) */
+  gap: 24px; /* ระยะห่างระหว่าง ชื่อ - ข้อความ - ปุ่ม */
+}
+
+.artist-name-highlight {
+  color: #f0b144; /* สีเหลืองตามดีไซน์ */
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.artist-quote {
+  color: #e0e0e0; /* สีขาวอมเทานิดๆ ให้ดูซอฟต์ลง ไม่อ่านแล้วแยงตา */
+  font-size: 14px;
+  line-height: 1.6; /* เพิ่มระยะห่างระหว่างบรรทัดให้อ่านง่ายขึ้น */
+}
+
+.read-more-btn {
+  background-color: #f0b144;
+  color: #1a0b2e;
+  text-decoration: none;
+  padding: 10px 40px; /* ด้านบน-ล่าง 10px, ซ้าย-ขวา 40px (ให้ปุ่มดูยาวๆ) */
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  display: inline-block;
+}
+
+.read-more-btn:hover {
+  background-color: #d99a2e; /* สีเหลืองเข้มขึ้นเวลาเอาเมาส์ชี้ */
+}
+
+/* --- ฝั่งขวา: กรอบรูปภาพ --- */
+.artist-image-wrapper {
+  /* เอาเทคนิค Glassmorphism มาปรับใช้เป็นกรอบรูปรอบๆ */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 16px; /* ระยะห่างจากขอบกรอบ เข้าไปหารูปภาพ (ทำหน้าที่เป็นความหนาของกรอบ) */
+  border-radius: 4px;
+  width: 100%;
+  /* กำหนดสัดส่วนรูปภาพ ถ้าอยากได้จัตุรัสใช้ 1/1 ถ้าอยากได้แนวตั้งหน่อยๆ ใช้ 4/5 ค่ะ */
+  aspect-ratio: 1 / 1;
+}
+
+.artist-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ครอปภาพให้เต็มพื้นที่โดยไม่เสียสัดส่วน */
+  border-radius: 2px; /* ลบเหลี่ยมรูปภาพด้านในนิดนึงให้เข้ากับกรอบนอก */
+}
