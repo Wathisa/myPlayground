@@ -555,3 +555,175 @@ body {
 .news-read-more:hover {
   color: #e45f2b;
 }
+
+/* ================= Join Our Community Section ================= */
+.community-section {
+  width: 100%;
+  padding: 80px 0; /* เพิ่มพื้นที่ว่างบน-ล่างให้ดูโปร่งๆ ไม่กะทัดรัดเกินไป */
+}
+
+.community-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* จัดให้หัวข้อและฟอร์มอยู่กึ่งกลางหน้าจอ */
+  gap: 30px; /* ระยะห่างระหว่างหัวข้อ กับ ช่องกรอกอีเมล */
+}
+
+.community-container h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* --- ส่วนของฟอร์มกรอกอีเมล --- */
+.subscribe-form {
+  display: flex; /* ใช้ flex เพื่อให้ช่องกรอกและปุ่มเรียงต่อกันในแนวนอน */
+  width: 100%;
+  max-width: 500px; /* บังคับไม่ให้ช่องกรอกอีเมลกว้างเกินไปจนดูแปลกตา */
+  gap: 10px; /* ระยะห่างระหว่างช่องกรอกอีเมล กับ ปุ่ม Subscribe */
+}
+
+/* ช่องกรอกข้อความ (Input) */
+.email-input {
+  flex: 1; /* สั่งให้ช่องกรอกอีเมลขยายตัวกินพื้นที่ที่เหลือทั้งหมด */
+  padding: 12px 20px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* สีพื้นหลังกล่องแบบกระจกขุ่นๆ ดรอปลงมานิดนึง */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* เส้นขอบบางๆ */
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none; /* เอาเส้นขอบสีฟ้าๆ ที่เบราว์เซอร์ชอบใส่ให้อัตโนมัติเวลาคลิกออก */
+  transition: border-color 0.3s ease;
+}
+
+/* เปลี่ยนสี Placeholder (ข้อความ Enter your email) ให้เป็นสีเทาอ่อน */
+.email-input::placeholder {
+  color: #a0a0a0;
+}
+
+/* เอฟเฟกต์เวลาคลิกที่ช่องกรอกอีเมล (Focus) */
+.email-input:focus {
+  border-color: #f0b144; /* เปลี่ยนสีเส้นขอบเป็นสีเหลืองเพื่อให้รู้ว่ากำลังพิมพ์อยู่ */
+}
+
+/* ปุ่ม Subscribe */
+.subscribe-btn {
+  background-color: #f0b144;
+  color: #1a0b2e;
+  border: none;
+  padding: 12px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.subscribe-btn:hover {
+  background-color: #e45f2b; /* สีเหลืองเข้มขึ้นเวลาเมาส์ชี้ */
+}
+
+/* ================= Footer Section ================= */
+.glass-footer {
+  width: 100%;
+  /* พื้นหลังสีขาวจางๆ แนวแก้วๆ ตามที่คุณ Sign ต้องการค่ะ */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* เพิ่มเส้นขอบบางๆ ด้านบนให้ดูตัดกับพื้นหลังเว็บ */
+  padding-top: 60px;
+  color: #ffffff;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between; /* กระจายเนื้อหา 3 ก้อนให้ห่างกัน (ซ้าย-กลาง-ขวา) */
+  align-items: flex-start; /* ให้ทุกก้อนเกาะเส้นบรรทัดด้านบนสุดตรงกัน */
+  flex-wrap: wrap; /* สำคัญ: เผื่อกรณีจอมอนิเตอร์แคบลง เนื้อหาจะได้ปัดตกลงมาอัตโนมัติ ไม่บีบกันจนเละ */
+  gap: 40px;
+}
+
+/* --- ส่วนโลโก้ --- */
+.footer-logo img {
+  height: 84px;
+  width: auto;
+}
+
+/* --- ส่วนลิงก์เมนู 2 คอลัมน์ --- */
+.footer-links {
+  display: flex;
+  gap: 80px; /* ระยะห่างระหว่างคอลัมน์ที่ 1 และ 2 */
+}
+
+.link-column {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* ระยะห่างระหว่างบรรทัดในแนวตั้ง */
+}
+
+.link-column a {
+  color: #cccccc; /* ใช้สีเทาอ่อนๆ เพื่อให้ดูรองลงมาจากเนื้อหาหลัก */
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.link-column a:hover {
+  color: #f0b144; /* เมาส์ชี้แล้วเป็นสีเหลือง */
+}
+
+/* --- ส่วนช่องทางติดตาม (Social Media) --- */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-social h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon-img {
+  height: 24px;
+  width: auto;
+  opacity: 0.6; /* ปรับให้รูปดูจางลงนิดนึงจะได้เข้ากับความโปร่งแสง */
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+.social-icon-img:hover {
+  opacity: 1; /* เมาส์ชี้ให้ชัดขึ้น 100% */
+  transform: translateY(
+    -3px
+  ); /* ลูกเล่นน่ารักๆ คือให้ไอคอนเด้งขึ้นนิดนึงตอนเมาส์ชี้ */
+}
+
+/* --- ส่วน Copyright ด้านล่างสุด --- */
+.footer-bottom {
+  text-align: center;
+  padding: 24px 0;
+  margin-top: 60px; /* ระยะห่างจากด้านบน (ดันลงมาให้ดูไม่อึดอัด) */
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* เส้นคั่นบางมากๆ ก่อนถึงตัวหนังสือ Copyright */
+  font-size: 12px;
+  color: #888888;
+}
