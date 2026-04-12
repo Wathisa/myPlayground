@@ -467,3 +467,91 @@ body {
   object-fit: cover; /* ครอปภาพให้เต็มพื้นที่โดยไม่เสียสัดส่วน */
   border-radius: 2px; /* ลบเหลี่ยมรูปภาพด้านในนิดนึงให้เข้ากับกรอบนอก */
 }
+
+/* ================= Latest News Section ================= */
+.latest-news-section {
+  width: 100%; /* ให้กว้างเต็มจอ เพื่อให้เส้นคั่นทะลุขอบ */
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* บังคับเนื้อหาให้อยู่ตรงกลาง และกว้างไม่เกิน 1200px */
+.latest-news-section .section-header,
+.news-container {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* แบ่งเป็น 3 คอลัมน์เท่าๆ กัน */
+  gap: 30px; /* ระยะห่างระหว่างกล่องข่าว */
+}
+
+/* --- การ์ดข่าวแต่ละกล่อง --- */
+.news-card {
+  /* ใช้พื้นหลังสีม่วงเข้มแบบโปร่งแสงนิดๆ ให้ดูมีมิติซ้อนกับพื้นหลังหลัก */
+  background: rgba(26, 11, 46, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden; /* บังคับไม่ให้รูปภาพล้นทะลุมุมโค้งของการ์ดออกมา */
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px); /* ยกการ์ดลอยขึ้นนิดนึง */
+  background: rgba(39, 14, 80, 0.5); /* ให้กล่องสว่างขึ้นนิดนึง */
+}
+
+.news-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10; /* กำหนดสัดส่วนรูปภาพให้เป็นแนวนอน (คล้ายๆ จอทีวี) */
+}
+
+.news-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- ข้อมูลด้านในกล่องข่าว --- */
+.news-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* ระยะห่างระหว่าง วันที่ - หัวข้อ - ปุ่มอ่านต่อ */
+}
+
+.news-date {
+  font-size: 11px;
+  color: #a0a0a0; /* สีเทาอ่อน */
+  text-align: right; /* ดันวันที่ไปชิดขวาตามแบบ */
+}
+
+.news-topic {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.news-read-more {
+  font-size: 12px;
+  color: #f0b144; /* สีเหลืองแบรนด์ของเรา */
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 8px; /* ดันปุ่มให้ห่างจากหัวข้อข่าวลงมาอีกนิด */
+  transition: color 0.3s;
+}
+
+.news-read-more:hover {
+  color: #e45f2b;
+}
