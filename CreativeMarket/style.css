@@ -250,6 +250,53 @@ body {
   opacity: 1; /* จุดไหนที่กำลังแสดงอยู่ ให้สว่างสุด */
 }
 
+/* ================= ส่วนเนื้อหาข้อความกลาง Hero (จัดชิดขวา) ================= */
+.hero-content {
+  position: absolute; /* ทำให้ลอยทับรูปภาพเหมือนเดิม */
+  top: 50%; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
+  transform: translateY(-50%); /* เวทมนตร์จัดกลางแนวตั้งเป๊ะๆ */
+
+  /* ====== 2 บรรทัดนี้เพื่อดันไปทางขวา ====== */
+  right: 10%; /* กำหนดระยะห่างจากขอบขวา 10% (ปรับลด-เพิ่มได้) */
+  text-align: right; /* จัดให้ข้อความและปุ่มชิดขวา (Right alignment) */
+  /* ======================================= */
+
+  z-index: 10;
+  width: 100%;
+  max-width: 650px; /* จำกัดความกว้างให้แคบลงนิดนึงเพื่อความสวยงาม */
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: 42px; /* ขนาดใหญ่เตะตา (ปรับเพิ่ม/ลดได้) */
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 30px; /* ระยะห่างระหว่างข้อความกับปุ่ม */
+  /* ใส่เงาสีดำจางๆ ให้ตัวอักษร เพื่อให้อ่านออกชัดเจนเวลารูปพื้นหลังสว่าง */
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* ปุ่ม Explore now */
+.hero-explore-btn {
+  background-color: #f0b144; /* สีเหลืองแบรนด์ */
+  color: #ffffff; /* สีตัวอักษรม่วงเข้ม */
+  text-decoration: none;
+  padding: 16px 48px; /* ทำให้ปุ่มดูอวบอิ่มน่ากด */
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px; /* ขอบมนโค้ง */
+  display: inline-block;
+  transition: all 0.3s ease;
+  /* เพิ่มเงาเรืองแสงสีเหลืองบางๆ ให้ปุ่มดูเด้งออกมา */
+  box-shadow: 0 4px 20px rgba(240, 177, 68, 0.3);
+}
+
+.hero-explore-btn:hover {
+  background-color: #e45f2b;
+  transform: translateY(-4px); /* ลูกเล่นให้ปุ่มลอยขึ้นนิดนึงเวลาจะกด */
+  box-shadow: 0 6px 25px rgba(255, 162, 0, 0.5); /* เงาสว่างขึ้นตอนเมาส์ชี้ */
+}
+
 /* ================= Category Bar ================= */
 .category-bar {
   background-color: #281046; /* สีพื้นหลังของแถบ (สีม่วงเข้มทึบๆ) */
@@ -630,9 +677,9 @@ body {
   width: 100%;
   padding: 80px 0;
 
-  /* 1. ใส่สี Overlay ทับรูปภาพ (ปรับความเข้มที่เลข 0.7) และตามด้วยที่อยู่ไฟล์รูปภาพ */
+  /* 1. ใส่สี Overlay ทับรูปภาพ และตามด้วยที่อยู่ไฟล์รูปภาพ */
   background-image:
-    linear-gradient(rgba(41, 14, 77, 0.8), rgba(41, 14, 77, 0.8)),
+    linear-gradient(rgba(41, 14, 77, 0.7), rgba(41, 14, 77, 0.7)),
     url("/images/community-bg.png");
 
   /* 2. สั่งให้รูปภาพขยายเต็มพื้นที่ของ Section เสมอ */
