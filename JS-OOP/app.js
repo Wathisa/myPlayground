@@ -1,1 +1,0 @@
-console.log("Simplydesign Studio");
