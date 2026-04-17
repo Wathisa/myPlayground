@@ -1,0 +1,46 @@
+/* จัดรูปแบบพื้นฐานให้หน้าเว็บ */
+body {
+  font-family: sans-serif;
+  text-align: center; /* ให้ตัวหนังสืออยู่ตรงกลาง */
+  background-color: #f4f4f9;
+  padding: 50px;
+}
+
+/* กล่องสี่เหลี่ยมสีขาวที่ครอบตัวเกมไว้ */
+.game-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px; /* ทำมุมให้โค้งมน */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ใส่เงาให้กล่องดูมีมิติ */
+  max-width: 400px;
+  margin: 0 auto; /* จัดให้อยู่กึ่งกลางหน้าจอ */
+}
+
+/* ตกแต่งปุ่มคลิกหลักให้ใหญ่และเด่นชัด */
+.main-button {
+  font-size: 24px;
+  padding: 15px 40px;
+  background-color: #ff9800; /* สีส้ม */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer; /* เปลี่ยนเมาส์เป็นรูปนิ้วชี้เวลานำไปชี้ */
+  margin: 20px 0;
+  transition: transform 0.1s; /* ทำให้มีเอฟเฟกต์เวลาขยับ */
+}
+
+/* ทำให้ปุ่มดูยุบลงไปเวลาเรากดคลิก */
+.main-button:active {
+  transform: scale(0.95);
+}
+
+/* ตกแต่งปุ่มร้านค้า */
+.store button {
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #4caf50; /* สีเขียว */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Command Center</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="column left-col">
+        <div class="progress-section">
+          <p>พลังงานที่สะสม</p>
+          <h1 id="scoreDisplay">0</h1>
+          <p>อัตราการผลิต: <span id="rateDisplay">0</span> / วินาที</p>
+        </div>
+
+        <div class="target-container">
+          <button id="clickButton" class="target-btn">
+            <strong>เป้าหมาย</strong><br />
+            (คลิกโจมตี)
+          </button>
+        </div>
+      </div>
+
+      <div class="column middle-col">
+        <h2>ศูนย์บัญชาการ</h2>
+        <div class="status-box">
+          <p>พลังโจมตีต่อคลิก</p>
+          <h3 id="clickPowerDisplay">1 หน่วย / คลิก</h3>
+        </div>
+      </div>
+
+      <div class="column right-col">
+        <h2>เรียกกำลังเสริม</h2>
+
+        <div class="upgrade-item">
+          <div class="upgrade-info">
+            <strong>1. ทหารราบจู่โจม</strong>
+            <p>+1 พลังคลิก</p>
+          </div>
+          <button id="buyUpgrade1" class="buy-btn">
+            ราคา: <span id="cost1">15</span>
+          </button>
+        </div>
+
+        <div class="upgrade-item">
+          <div class="upgrade-info">
+            <strong>2. โดรนเก็บเกี่ยว</strong>
+            <p>+1 ออโต้ / วินาที</p>
+          </div>
+          <button id="buyUpgrade2" class="buy-btn">
+            ราคา: <span id="cost2">100</span>
+          </button>
+        </div>
+
+        <div class="upgrade-item">
+          <div class="upgrade-info">
+            <strong>3. รถถังพลาสมา</strong>
+            <p>+5 ออโต้ / วินาที</p>
+          </div>
+          <button id="buyUpgrade3" class="buy-btn">
+            ราคา: <span id="cost3">500</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

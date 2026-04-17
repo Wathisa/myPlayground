@@ -1,0 +1,109 @@
+/* รีเซ็ตค่าพื้นฐาน */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* เลย์เอาต์หลัก แบ่ง 3 คอลัมน์ */
+.dashboard {
+  display: flex;
+  gap: 20px; /* ระยะห่างระหว่างคอลัมน์ */
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90vh;
+}
+
+/* ตั้งค่าพื้นฐานให้แต่ละคอลัมน์ */
+.column {
+  flex: 1; /* ให้แต่ละคอลัมน์กว้างเท่าๆ กัน */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* --- ตกแต่งคอลัมน์ซ้าย (เป้าหมาย) --- */
+.left-col {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.progress-section h1 {
+  font-size: 60px;
+  margin: 10px 0;
+}
+
+.target-container {
+  border: 2px dashed #ccc;
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.target-btn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /* ทำให้ปุ่มเป็นวงกลม */
+  background-color: #e9ecef;
+  border: 2px solid #adb5bd;
+  font-size: 18px;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.target-btn:active {
+  transform: scale(0.95);
+  background-color: #dee2e6;
+}
+
+/* --- ตกแต่งคอลัมน์กลาง --- */
+.status-box {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* --- ตกแต่งคอลัมน์ขวา (ร้านค้า) --- */
+.upgrade-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.upgrade-info p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.buy-btn {
+  padding: 8px 15px;
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buy-btn:hover {
+  background-color: #495057;
+}

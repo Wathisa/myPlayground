@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Clicker Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>เกมคลิกเกอร์จำลอง</h1>
+
+      <div class="score-board">
+        <h2>คะแนนของคุณ: <span id="scoreDisplay">0</span></h2>
+        <p>ผลิตอัตโนมัติ: <span id="rateDisplay">0</span> แต้ม/วินาที</p>
+      </div>
+
+      <button id="clickButton" class="main-button">คลิกฉัน!</button>
+
+      <hr />
+      <div class="store">
+        <h3>ร้านค้าอัปเกรด</h3>
+        <button id="buyIdleBtn">ซื้อผู้ช่วยคลิก (ราคา: 10 แต้ม)</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
