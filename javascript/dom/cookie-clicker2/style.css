@@ -7,44 +7,46 @@
 body {
   margin: 0;
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: #fce4ec; /* เปลี่ยนพื้นหลังเป็นสีชมพูอ่อนๆ ให้เข้าธีม */
   color: #333;
 }
 
-/* เลย์เอาต์หลัก แบ่ง 3 คอลัมน์ */
 .dashboard {
   display: flex;
-  gap: 20px; /* ระยะห่างระหว่างคอลัมน์ */
-  max-width: 1200px;
+  gap: 10px;
+  max-width: 1400px;
   margin: 0 auto;
   height: 90vh;
 }
 
-/* ตั้งค่าพื้นฐานให้แต่ละคอลัมน์ */
 .column {
-  flex: 1; /* ให้แต่ละคอลัมน์กว้างเท่าๆ กัน */
+  flex: 1;
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #f48fb1; /* ขอบสีชมพูเข้มขึ้น */
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(233, 30, 99, 0.1);
+  overflow-y: auto; /* เผื่อปุ่มเยอะเกินหน้าจอ จะได้เลื่อนเมาส์ลงมาดูได้ */
 }
 
-/* --- ตกแต่งคอลัมน์ซ้าย (เป้าหมาย) --- */
+/* --- ตกแต่งคอลัมน์ซ้าย --- */
 .left-col {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center; /* เปลี่ยนจาก space-between เป็น center */
+  align-items: center; /* เพิ่มคำสั่งนี้เพื่อจัดให้อยู่กึ่งกลางแนวนอนด้วย */
+  gap: 40px; /* เพิ่มระยะห่างระหว่างตัวเลขคะแนนกับปุ่ม เพื่อไม่ให้มันเบียดกันเกินไป */
 }
 
 .progress-section h1 {
   font-size: 60px;
   margin: 10px 0;
+  color: #e91e63; /* สีตัวเลขคะแนนเป็นสีชมพูเข้ม */
 }
 
 .target-container {
-  border: 2px dashed #ccc;
+  border: 3px dashed #f48fb1;
   padding: 40px;
   border-radius: 10px;
   display: flex;
@@ -52,40 +54,103 @@ body {
   align-items: center;
 }
 
+/* --- ส่วนปุ่มคลิก --- */
 .target-btn {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%; /* ทำให้ปุ่มเป็นวงกลม */
-  background-color: #e9ecef;
-  border: 2px solid #adb5bd;
-  font-size: 18px;
-  color: #495057;
+  width: 250px; /* กำหนดขนาดความกว้างให้คงที่ */
+  height: 250px; /* กำหนดความสูงให้เท่ากับความกว้าง จะได้เป็นวงกลมสมบูรณ์ */
+  background-color: transparent;
+  border: 4px dashed #adb5bd; /* เส้นประสีเทา (เปลี่ยนสีได้ถ้าต้องการ) */
+  border-radius: 50%; /* บังคับให้กรอบเป็นวงกลม */
+  padding: 0; /* ** ลบช่องว่างสีขาวด้านในออกแล้ว! ** */
   cursor: pointer;
-  transition: all 0.1s;
+  transition: transform 0.1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* ** สำคัญ: สั่งให้ตัดขอบรูปภาพส่วนที่ล้นออกไปนอกวงกลมทิ้ง ** */
 }
 
+/* --- ส่วนรูปภาพด้านในปุ่ม --- */
+.target-btn img {
+  width: 100%; /* บังคับให้รูปกว้างเต็มวงกลม */
+  height: 100%; /* บังคับให้รูปสูงเต็มวงกลม */
+  object-fit: cover; /* ** สำคัญมาก: สั่งให้รูปภาพซูมเต็มพื้นที่โดยไม่ผิดสัดส่วน (ไม่ยืด/ไม่บีบ) ** */
+}
+
+/* ========================================= */
+/* --- เอฟเฟกต์ปุ่มเด้งตอนเอาเมาส์ชี้ --- */
+/* ========================================= */
+
+/* 1. สร้างจังหวะการขยับ (Keyframes) ตั้งชื่อว่า 'pulse' */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  } /* เริ่มต้น: ขนาดเท่าเดิม (100%) */
+  50% {
+    transform: scale(1.05);
+  } /* ครึ่งทาง: ขยายใหญ่ขึ้นนิดหน่อย (105%) */
+  100% {
+    transform: scale(1);
+  } /* ตอนจบ: หดกลับมาขนาดเท่าเดิม */
+}
+
+/* 2. สั่งให้ปุ่มเล่นแอนิเมชันตอนเอาเมาส์ชี้ (:hover) */
+.target-btn:hover {
+  /* เรียกใช้ pulse ใช้เวลา 0.5 วินาทีต่อรอบ */
+  animation: pulse 0.5s ease-in-out;
+}
+
+/* 3. อัปเดตตอนกดคลิก (:active) ให้ปุ่มยุบลงไปเหมือนเดิม */
 .target-btn:active {
-  transform: scale(0.95);
-  background-color: #dee2e6;
+  animation: none; /* ต้องสั่งปิดแอนิเมชันชั่วคราวตอนกด */
+  transform: scale(
+    0.95
+  ) !important; /* ให้ยุบลงไป 5% (!important เพื่อบังคับให้ทำงาน) */
 }
 
 /* --- ตกแต่งคอลัมน์กลาง --- */
-.status-box {
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 5px;
-  margin-top: 20px;
+.middle-col {
+  text-align: center;
 }
 
-/* --- ตกแต่งคอลัมน์ขวา (ร้านค้า) --- */
-.upgrade-item {
+/* ลดช่องว่างด้านล่างของบรรทัดภาษาอังกฤษ */
+.middle-col h2 {
+  margin-bottom: 5px; /* ปรับตัวเลขให้น้อยลงเพื่อให้อยู่ชิดขึ้น (ค่าเริ่มต้นมักจะเยอะกว่านี้) */
+}
+
+/* ลดช่องว่างด้านบนของบรรทัดภาษาไทย */
+.middle-col h3 {
+  margin-top: 0px; /* สั่งให้ช่องว่างด้านบนเป็นศูนย์ไปเลย จะได้ชิดกับบรรทัดบน */
+  color: #666; /* แถม: ปรับสีตัวหนังสือให้เป็นสีเทาเข้ม จะได้ดูเป็นหัวข้อรองที่สวยขึ้นค่ะ */
+}
+
+.status-box {
+  border: 2px solid #f8bbd0;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  background-color: #fffcfd;
+}
+
+/* --- ตกแต่งคอลัมน์ขวา (ปุ่มร้านค้า) --- */
+.right-col {
+  flex: 1.8; /* <--- เพิ่มบรรทัดนี้เข้าไป! จะทำให้คอลัมน์ขวากว้างกว่าคอลัมน์อื่นเกือบ 2 เท่า */
+  text-align: center;
+}
+
+.upgrade-btn {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 5px;
+  background-color: white;
+  border: 2px solid #f8bbd0;
+  padding: 30px 15px 30px 150px;
+  border-radius: 8px;
   margin-bottom: 15px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
 }
 
 .upgrade-info p {
@@ -94,16 +159,126 @@ body {
   color: #666;
 }
 
-.buy-btn {
-  padding: 8px 15px;
-  background-color: #212529;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.upgrade-cost {
   font-weight: bold;
+  color: #e91e63;
 }
 
-.buy-btn:hover {
-  background-color: #495057;
+.upgrade-btn:hover:not(:disabled) {
+  border-color: #f06292;
+  background-color: #fff0f5;
+  transform: scale(1.02);
+}
+
+.upgrade-btn:disabled {
+  background-color: #f5f5f5;
+  border-color: #eee;
+  color: #aaa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.upgrade-btn:disabled .upgrade-cost {
+  color: #aaa;
+}
+
+/* ========================================= */
+/* --- ใส่ภาพพื้นหลังให้กล่องพลัง --- */
+/* ========================================= */
+
+/* พลังที่ 1: สารเคมี X */
+#buyUpgrade1 {
+  /* 1. ใส่ที่อยู่รูปภาพ (อย่าลืมเปลี่ยนชื่อไฟล์ให้ตรงกับรูปของคุณนะคะ) */
+  background-image: url("power-1.png");
+
+  /* 2. สั่งให้รูปขยายเต็มพอดีกับขนาดกล่องเดิม */
+  background-size: cover;
+
+  /* 3. จัดให้รูปอยู่กึ่งกลางกล่อง */
+  background-position: center;
+
+  /* 4. สั่งไม่ให้รูปแสดงซ้ำต่อกันเป็นกระเบื้อง */
+  background-repeat: no-repeat;
+}
+
+/* พลังคฑาแห่งดวงดาว */
+#buyUpgrade2 {
+  background-image: url("power-2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* พลังแมวเหมียวลูน่า */
+#buyUpgrade3 {
+  background-image: url("power-3.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* พลังโคลว์การ์ด */
+#buyUpgrade4 {
+  background-image: url("power-4.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* พลังมิตรภาพ */
+#buyUpgrade5 {
+  background-image: url("power-5.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ========================================= */
+/* --- รองรับหน้าจอมือถือ (Responsive) --- */
+/* ========================================= */
+
+/* 1. ตอนจอคอมปกติ: ให้ซ่อนข้อความของมือถือไว้ก่อน */
+.mobile-only {
+  display: none;
+}
+
+/* 2. เมื่อหน้าจอแคบกว่า 800px (มือถือ) ให้ทำตามในปีกกานี้ */
+@media (max-width: 800px) {
+  /* บังคับให้หน้าเว็บหลักสูงเกือบเต็มจอพอดี (95vh) จะได้ไม่เลื่อนทั้งหน้า */
+  .dashboard {
+    flex-direction: column;
+    height: 95vh; /* เปลี่ยนจาก auto กลับมาเป็นแบบ fix */
+    gap: 15px; /* ลดช่องว่างระหว่างกล่องลงนิดนึง */
+  }
+
+  /* กล่องบน (คะแนน & ปุ่มคลิก) ให้หดลงมาพอดีเนื้อหา ห้ามยืดขยาย */
+  .left-col {
+    flex: none;
+    padding: 15px;
+    gap: 15px; /* ลดช่องว่างระหว่างตัวเลขกับปุ่ม */
+  }
+
+  /* กล่องล่าง (ร้านค้า) ให้กินพื้นที่ที่เหลือทั้งหมด และเลื่อน Scroll ได้ */
+  .right-col {
+    flex: 1;
+    overflow-y: auto; /* หัวใจสำคัญ: สั่งให้เลื่อนได้เฉพาะกล่องนี้ */
+    padding: 15px;
+  }
+
+  /* ย่อปุ่มคทาลงให้เล็กพอดีกับมือถือ จะได้ไม่ดันกล่องร้านค้าให้แคบ */
+  .target-btn {
+    padding: 10px;
+  }
+  .target-btn img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  /* ซ่อนกล่องกลาง โชว์ข้อความมือถือ */
+  .middle-col {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
 }

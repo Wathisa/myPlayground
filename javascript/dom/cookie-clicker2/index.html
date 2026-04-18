@@ -3,66 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Space Command Center</title>
+    <title>Magical Girls Alliance</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="dashboard">
       <div class="column left-col">
         <div class="progress-section">
-          <p>พลังงานที่สะสม</p>
+          <p>✨ พลังเวทแห่งจักรวาล ✨</p>
           <h1 id="scoreDisplay">0</h1>
           <p>อัตราการผลิต: <span id="rateDisplay">0</span> / วินาที</p>
+
+          <p class="mobile-only" style="color: #e91e63; font-weight: bold">
+            พลังร่ายมนต์: <span id="mobileClickPowerDisplay">1</span> หน่วย /
+            คลิก
+          </p>
         </div>
 
         <div class="target-container">
           <button id="clickButton" class="target-btn">
-            <strong>เป้าหมาย</strong><br />
-            (คลิกโจมตี)
+            <img src="sailormoon.png" alt="Sailor Moon" />
           </button>
         </div>
       </div>
 
       <div class="column middle-col">
-        <h2>ศูนย์บัญชาการ</h2>
+        <h2>Magical Girls Alliance</h2>
+        <h3>สมาพันธ์สาวน้อยเวทมนตร์</h3>
         <div class="status-box">
-          <p>พลังโจมตีต่อคลิก</p>
+          <p>พลังเวทต่อการร่ายมนต์ 1 ครั้ง</p>
           <h3 id="clickPowerDisplay">1 หน่วย / คลิก</h3>
         </div>
       </div>
 
       <div class="column right-col">
-        <h2>เรียกกำลังเสริม</h2>
+        <h2>อัปเกรดพลัง</h2>
 
-        <div class="upgrade-item">
+        <button id="buyUpgrade1" class="upgrade-btn">
           <div class="upgrade-info">
-            <strong>1. ทหารราบจู่โจม</strong>
-            <p>+1 พลังคลิก</p>
+            <strong>สารเคมี X (Chemical X)</strong>
+            <p>+1 พลังร่ายมนต์ (ต่อคลิก)</p>
           </div>
-          <button id="buyUpgrade1" class="buy-btn">
-            ราคา: <span id="cost1">15</span>
-          </button>
-        </div>
+          <div class="upgrade-cost"><span id="cost1">20</span> พลังเวท</div>
+        </button>
 
-        <div class="upgrade-item">
+        <button id="buyUpgrade2" class="upgrade-btn">
           <div class="upgrade-info">
-            <strong>2. โดรนเก็บเกี่ยว</strong>
+            <strong>คทาแห่งดวงดาว (Star Wand)</strong>
             <p>+1 ออโต้ / วินาที</p>
           </div>
-          <button id="buyUpgrade2" class="buy-btn">
-            ราคา: <span id="cost2">100</span>
-          </button>
-        </div>
+          <div class="upgrade-cost"><span id="cost2">65</span> พลังเวท</div>
+        </button>
 
-        <div class="upgrade-item">
+        <button id="buyUpgrade3" class="upgrade-btn">
           <div class="upgrade-info">
-            <strong>3. รถถังพลาสมา</strong>
+            <strong>แมวเหมียวลูน่า (Luna's Guidance)</strong>
             <p>+5 ออโต้ / วินาที</p>
           </div>
-          <button id="buyUpgrade3" class="buy-btn">
-            ราคา: <span id="cost3">500</span>
-          </button>
-        </div>
+          <div class="upgrade-cost"><span id="cost3">200</span> พลังเวท</div>
+        </button>
+
+        <button id="buyUpgrade4" class="upgrade-btn">
+          <div class="upgrade-info">
+            <strong>โคลว์การ์ด (Clow Cards)</strong>
+            <p>+20 ออโต้ / วินาที</p>
+          </div>
+          <div class="upgrade-cost"><span id="cost4">800</span> พลังเวท</div>
+        </button>
+
+        <button id="buyUpgrade5" class="upgrade-btn">
+          <div class="upgrade-info">
+            <strong>พลังมิตรภาพทะลุมิติ! (Bestfriend's Power)</strong>
+            <p>+100 ออโต้ / วินาที</p>
+          </div>
+          <div class="upgrade-cost"><span id="cost5">2500</span> พลังเวท</div>
+        </button>
       </div>
     </div>
 
