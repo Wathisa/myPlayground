@@ -1,86 +1,135 @@
 <!doctype html>
+<!-- กำหนดว่าเอกสารนี้เป็นไฟล์ HTML5 -->
 <html lang="th">
+  <!-- ระบุว่าภาษาหลักของหน้าเว็บคือภาษาไทย -->
   <head>
+    <!-- ส่วน head ใช้เก็บข้อมูลตั้งค่าของหน้าเว็บ -->
     <meta charset="UTF-8" />
+    <!-- รองรับอักขระภาษาไทยและอักขระพิเศษต่าง ๆ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ทำให้หน้าเว็บแสดงผลได้เหมาะกับหน้าจอมือถือ -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- โหลดฟอนต์ Fredoka จาก Google Fonts -->
     <title>Magical Girls Alliance</title>
+    <!-- ชื่อที่แสดงบนแท็บเบราว์เซอร์ -->
     <link rel="stylesheet" href="style.css" />
+    <!-- เชื่อมไฟล์ CSS ภายนอกเข้ากับหน้าเว็บ -->
   </head>
   <body>
+    <!-- ส่วน body คือเนื้อหาที่ผู้ใช้มองเห็นบนหน้าเว็บ -->
     <div class="dashboard">
-      <div class="column left-col">
-        <div class="progress-section">
-          <p>✨ พลังเวทแห่งจักรวาล ✨</p>
-          <h1 id="scoreDisplay">0</h1>
-          <p>อัตราการผลิต: <span id="rateDisplay">0</span> / วินาที</p>
+      <!-- กล่องหลักของหน้าเว็บ ใช้ครอบทุกคอลัมน์ -->
+      <div class="column main-col">
+        <!-- คอลัมน์หลักฝั่งซ้ายที่รวมคอลัมน์ซ้ายและกลางเดิมเข้าด้วยกัน -->
+        <h2>The Powerpuff Girls HQ</h2>
+        <!-- หัวข้อหลักของคอลัมน์ซ้าย -->
+        <div class="main-top">
+          <!-- กล่องด้านบน ใช้รวมส่วนคะแนนและสถานะพลังต่อคลิก -->
+          <div class="progress-section">
+            <!-- ส่วนแสดงคะแนนและพลังอัตโนมัติ -->
+            <h2>Chemical X Energy</h2>
+            <!-- หัวข้อของคะแนนหลักในเกม -->
+            <h1 id="scoreDisplay">0</h1>
+            <!-- ตัวเลขคะแนนปัจจุบัน โดย JavaScript จะอัปเดตค่าตรงนี้ -->
+            <p>Auto Power: <span id="rateDisplay">0</span> / sec</p>
+            <!-- แสดงค่าพลังอัตโนมัติต่อวินาที -->
+          </div>
 
-          <p class="mobile-only" style="color: #e91e63; font-weight: bold">
-            พลังร่ายมนต์: <span id="mobileClickPowerDisplay">1</span> หน่วย /
-            คลิก
-          </p>
+          <div class="status-box">
+            <!-- กล่องแสดงสถานะพลังต่อการคลิกหนึ่งครั้ง -->
+            <p>Power per Click</p>
+            <!-- ข้อความบอกประเภทของสถานะที่กำลังแสดง -->
+            <h3 id="clickPowerDisplay">1 Power / Click</h3>
+            <!-- JavaScript จะอัปเดตค่าพลังต่อคลิกที่บรรทัดนี้ -->
+          </div>
         </div>
 
         <div class="target-container">
+          <!-- กล่องครอบปุ่มหลักสำหรับให้ผู้เล่นกดเก็บคะแนน -->
           <button id="clickButton" class="target-btn">
-            <img src="sailormoon.png" alt="Sailor Moon" />
+            <!-- ปุ่มหลักของเกมที่ใช้คลิกเพื่อเพิ่มคะแนน -->
+            <img src="power-btn.png" alt="Powerpuff Girls" />
+            <!-- รูปภาพที่อยู่ภายในปุ่มคลิก -->
           </button>
         </div>
       </div>
 
-      <div class="column middle-col">
-        <h2>Magical Girls Alliance</h2>
-        <h3>สมาพันธ์สาวน้อยเวทมนตร์</h3>
-        <div class="status-box">
-          <p>พลังเวทต่อการร่ายมนต์ 1 ครั้ง</p>
-          <h3 id="clickPowerDisplay">1 หน่วย / คลิก</h3>
-        </div>
-      </div>
-
       <div class="column right-col">
-        <h2>อัปเกรดพลัง</h2>
+        <!-- คอลัมน์ขวาสำหรับแสดงรายการอัปเกรด -->
+        <h2>Team Upgrades</h2>
+        <!-- หัวข้อของส่วนอัปเกรดทั้งหมด -->
 
         <button id="buyUpgrade1" class="upgrade-btn">
+          <!-- ปุ่มซื้ออัปเกรดชิ้นที่ 1 -->
           <div class="upgrade-info">
-            <strong>สารเคมี X (Chemical X)</strong>
-            <p>+1 พลังร่ายมนต์ (ต่อคลิก)</p>
+            <!-- ส่วนข้อมูลชื่อและรายละเอียดของอัปเกรด -->
+            <strong>Chemical X Boost</strong>
+            <!-- ชื่ออัปเกรด -->
+            <p>+1 power per click</p>
+            <!-- รายละเอียดผลลัพธ์ของอัปเกรด -->
           </div>
-          <div class="upgrade-cost"><span id="cost1">20</span> พลังเวท</div>
+          <div class="upgrade-cost"><span id="cost1">20</span> energy</div>
+          <!-- ราคาของอัปเกรด โดย JavaScript จะอัปเดตเลขใน span นี้ -->
         </button>
 
         <button id="buyUpgrade2" class="upgrade-btn">
+          <!-- ปุ่มซื้ออัปเกรดชิ้นที่ 2 -->
           <div class="upgrade-info">
-            <strong>คทาแห่งดวงดาว (Star Wand)</strong>
-            <p>+1 ออโต้ / วินาที</p>
+            <!-- ส่วนข้อมูลชื่อและรายละเอียดของอัปเกรด -->
+            <strong>Blossom’s Leadership</strong>
+            <!-- ชื่ออัปเกรด -->
+            <p>+1 power per second</p>
+            <!-- รายละเอียดผลลัพธ์ของอัปเกรด -->
           </div>
-          <div class="upgrade-cost"><span id="cost2">65</span> พลังเวท</div>
+          <div class="upgrade-cost"><span id="cost2">65</span> energy</div>
+          <!-- ราคาของอัปเกรด โดย JavaScript จะอัปเดตเลขใน span นี้ -->
         </button>
 
         <button id="buyUpgrade3" class="upgrade-btn">
+          <!-- ปุ่มซื้ออัปเกรดชิ้นที่ 3 -->
           <div class="upgrade-info">
-            <strong>แมวเหมียวลูน่า (Luna's Guidance)</strong>
-            <p>+5 ออโต้ / วินาที</p>
+            <!-- ส่วนข้อมูลชื่อและรายละเอียดของอัปเกรด -->
+            <strong>Bubbles’ Joy</strong>
+            <!-- ชื่ออัปเกรด -->
+            <p>+5 power per second</p>
+            <!-- รายละเอียดผลลัพธ์ของอัปเกรด -->
           </div>
-          <div class="upgrade-cost"><span id="cost3">200</span> พลังเวท</div>
+          <div class="upgrade-cost"><span id="cost3">200</span> energy</div>
+          <!-- ราคาของอัปเกรด โดย JavaScript จะอัปเดตเลขใน span นี้ -->
         </button>
 
         <button id="buyUpgrade4" class="upgrade-btn">
+          <!-- ปุ่มซื้ออัปเกรดชิ้นที่ 4 -->
           <div class="upgrade-info">
-            <strong>โคลว์การ์ด (Clow Cards)</strong>
-            <p>+20 ออโต้ / วินาที</p>
+            <!-- ส่วนข้อมูลชื่อและรายละเอียดของอัปเกรด -->
+            <strong>Buttercup’s Strength</strong>
+            <!-- ชื่ออัปเกรด -->
+            <p>+20 power per second</p>
+            <!-- รายละเอียดผลลัพธ์ของอัปเกรด -->
           </div>
-          <div class="upgrade-cost"><span id="cost4">800</span> พลังเวท</div>
+          <div class="upgrade-cost"><span id="cost4">800</span> energy</div>
+          <!-- ราคาของอัปเกรด โดย JavaScript จะอัปเดตเลขใน span นี้ -->
         </button>
 
         <button id="buyUpgrade5" class="upgrade-btn">
+          <!-- ปุ่มซื้ออัปเกรดชิ้นที่ 5 -->
           <div class="upgrade-info">
-            <strong>พลังมิตรภาพทะลุมิติ! (Bestfriend's Power)</strong>
-            <p>+100 ออโต้ / วินาที</p>
+            <!-- ส่วนข้อมูลชื่อและรายละเอียดของอัปเกรด -->
+            <strong>Professor Utonium’s Lab</strong>
+            <!-- ชื่ออัปเกรด -->
+            <p>+100 power per second</p>
+            <!-- รายละเอียดผลลัพธ์ของอัปเกรด -->
           </div>
-          <div class="upgrade-cost"><span id="cost5">2500</span> พลังเวท</div>
+          <div class="upgrade-cost"><span id="cost5">2500</span> energy</div>
+          <!-- ราคาของอัปเกรด โดย JavaScript จะอัปเดตเลขใน span นี้ -->
         </button>
       </div>
     </div>
 
     <script src="script.js"></script>
+    <!-- เชื่อมไฟล์ JavaScript เพื่อให้เกมทำงานได้ -->
   </body>
 </html>
